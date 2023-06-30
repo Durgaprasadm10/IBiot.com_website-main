@@ -4,7 +4,7 @@ metadata:
   name: webapplication
   labels:
     app: webapplication
-  namespace: namespace-workflow-1688103216000
+  namespace: ibtesting
 spec:
   replicas: 1
   selector:
@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: webapplication
-          image: acrworkflow1688103216000.azurecr.io/image-workflow-1688103216000:latest
+          image: ibtesting.azurecr.io/ibiot.com_website-main:latest
           ports:
             - containerPort: 80
