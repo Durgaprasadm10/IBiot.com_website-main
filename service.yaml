@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webapplication
-  namespace: namespace-workflow-1688103216000
+  namespace: ibtesting
 spec:
   type: LoadBalancer
   selector:
