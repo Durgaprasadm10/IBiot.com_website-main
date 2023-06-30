@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapplication
+  name: ibiotmain
   labels:
-    app: webapplication
-  namespace: namespace-workflow-1687866844057
+    app: ibiotmain
+  namespace: namespace-workflow-1688114298580
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapplication
+      app: ibiotmain
   template:
     metadata:
       labels:
-        app: webapplication
+        app: ibiotmain
     spec:
       containers:
-        - name: webapplication
-          image: acrworkflow1687866844057.azurecr.io/image-workflow-1687866844057:latest
+        - name: ibiotmain
+          image: acrworkflow1688114298580.azurecr.io/image-workflow-1688114298580:latest
           ports:
             - containerPort: 80
