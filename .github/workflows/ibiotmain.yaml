@@ -6,10 +6,10 @@ name: ibiotmain
     workflow_dispatch: {}
 env:
     ACR_RESOURCE_GROUP: IBJUNE
-    AZURE_CONTAINER_REGISTRY: acrworkflow1688103216000
+    AZURE_CONTAINER_REGISTRY: ibtesting
     CLUSTER_NAME: k8s
     CLUSTER_RESOURCE_GROUP: IBJUNE
-    CONTAINER_NAME: image-workflow-1688103216000
+    CONTAINER_NAME: ibiot.com_website-main
     DEPLOYMENT_MANIFEST_PATH: |
         ./deployment.yaml
 jobs:
@@ -61,4 +61,4 @@ jobs:
                 action: deploy
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-                namespace: namespace-workflow-1688103216000
+                namespace: webapplication
