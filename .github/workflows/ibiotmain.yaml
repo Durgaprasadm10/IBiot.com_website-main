@@ -6,12 +6,13 @@ name: ibiotmain
     workflow_dispatch: {}
 env:
     ACR_RESOURCE_GROUP: IBJUNE
-    AZURE_CONTAINER_REGISTRY: ibtesting
+    AZURE_CONTAINER_REGISTRY: acrworkflow1688114298580
     CLUSTER_NAME: k8s
     CLUSTER_RESOURCE_GROUP: IBJUNE
-    CONTAINER_NAME: ibiot.com_website-main
+    CONTAINER_NAME: image-workflow-1688114298580
     DEPLOYMENT_MANIFEST_PATH: |
-        ./deployment.yaml
+        manifests/deployment.yaml
+        manifests/service.yaml
 jobs:
     buildImage:
         permissions:
@@ -27,7 +28,7 @@ jobs:
                 subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
                 tenant-id: ${{ secrets.AZURE_TENANT_ID }}
             - name: Build and push image to ACR
-              run: az acr build --image ${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.ACR_RESOURCE_GROUP }} -f ./Dockerfile ./
+              run: az acr build --image ${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.ACR_RESOURCE_GROUP }} -f Dockerfile ./
     deploy:
         permissions:
             actions: read
@@ -61,4 +62,4 @@ jobs:
                 action: deploy
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-                namespace: webapplication
+                namespace: namespace-workflow-1688114298580
