@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webapplication
-  namespace: namespace-workflow-1688100002573
+  namespace: namespace-workflow-1688103216000
 spec:
   type: LoadBalancer
   selector:
