@@ -1,6 +1,6 @@
 FROM composer:2.5 AS build-env
 COPY . /app
-RUN cd /app && composer install
+RUN cd /app 
 
 FROM php:8.2-apache
 ENV PORT 80
