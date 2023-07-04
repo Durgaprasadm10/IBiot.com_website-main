@@ -11,7 +11,7 @@ env:
     CLUSTER_RESOURCE_GROUP: IBJUNE
     CONTAINER_NAME: ibiot.com_website-main
     DEPLOYMENT_MANIFEST_PATH: |
-        ./deployment.yaml
+        ./service.yaml
 jobs:
     buildImage:
         permissions:
@@ -61,4 +61,4 @@ jobs:
                 action: deploy
                 images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
                 manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-                namespace: namespace-workflow-1688100987725
+                namespace: namespace-workflow-1688463822210
